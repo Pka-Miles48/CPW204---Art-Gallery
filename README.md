@@ -2,6 +2,9 @@
 This repository is an example used to gain
 experience with source control and TypeScript.
 
+## Live website
+Check out the live website, which is hosted by [GitHub Pages](https://pka-miles48.github.io/CPW204---Art-Gallery/)
+
 ## Getting Started
 
 ### Installing TypeScript
