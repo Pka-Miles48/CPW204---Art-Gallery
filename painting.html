@@ -7,7 +7,35 @@
     <script defer src="js/main.js"></script>
 </head>
 <body>
-    
+    <h2>Add a Painting</h2>
+    <form>
+        <label for="inventory-numbers">Inventory Numbers</label>
+        <input id="inventory-numbers" type="text">
+        <span class="error-msg"></span>
+        <br>
+
+        <label for="global-ids">Global IDs</label>
+        <input id="global-ids" type="text">
+        <span class="error-msg"></span>
+        <br>
+
+        <label for="artwork-archive">Artwork Archive</label>
+        <input id="artwork-archive" type="text">
+        <span class="error-msg"></span>
+        <br>
+
+        <label for="price">Price</label>
+        <input id="price" type="number" step=".01">
+        <span class="error-msg"></span>
+        <br>
+
+        <label for="title">Title</label>
+        <input id="title" type="text">
+        <span class="error-msg"></span>
+        <br>
+
+        <button type="button">Submit Painting</button>
+    </form>
 
 </body>
 </html>
