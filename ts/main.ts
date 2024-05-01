@@ -67,7 +67,7 @@ function getPainting():Painting {
     let globalIDsTextBox = document.querySelector("#global-ids") as HTMLInputElement;
     let artworkarchiveTextBox = document.querySelector("artwork-archive") as HTMLInputElement;
     let priceTextBox = document.querySelector("#price") as HTMLInputElement;
-    let title = document.querySelector("#title") as HTMLInputElement;
+    let titleTextBox = document.querySelector("#title") as HTMLInputElement;
 
     // Validate data
     let isValidData:boolean = true;
@@ -76,9 +76,26 @@ function getPainting():Painting {
     let inventorynumbers = inventorynumbersTextBox.value;
     if (isValidInventoryNumbers(inventorynumbers)) {
         isValidData = false;
-        inventorynumbersTextBox.nextElementSibling.textContent;
+        inventorynumbersTextBox.nextElementSibling.textContent = "The inventory number must represent the last two digits of the year and then define a category or type of work";
     }
 
+    // Validate the Global IDs
+    function isValidGlobalId(id: string): boolean {
+        // A simple regex for validation
+        const regex = /^[a-zA-Z0-9-_]+$/;
+        return regex.test(id);
+    }
+    
+    // Usage
+    const id: string = "yourGlobalId";
+    if(isValidGlobalId(id)) {
+        console.log("Valid Global ID");
+        isValidData = false;
+        inventorynumbersTextBox.nextElementSibling.textContent = "You must enter a 5 digit global ID";
+    } else {
+        console.log("Invalid Global ID");
+    }
+    
 }
 
 /**
