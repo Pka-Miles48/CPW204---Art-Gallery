@@ -58,10 +58,36 @@ function processPainting() {
  * This function will retrieve all the painting
  * data from the HTML page. If all data is valid
  * a painting project will be returned. If any data
- * is invalid, null will be returned.
+ * is invalid, null will be returned and error messages
+ * will be shown on the web page.
  */
 function getPainting():Painting {
-    
+    // Get all inputs
+    let inventorynumbersTextBox = document.querySelector("#inventory-numbers") as HTMLInputElement;
+    let globalIDsTextBox = document.querySelector("#global-ids") as HTMLInputElement;
+    let artworkarchiveTextBox = document.querySelector("artwork-archive") as HTMLInputElement;
+    let priceTextBox = document.querySelector("#price") as HTMLInputElement;
+    let title = document.querySelector("#title") as HTMLInputElement;
+
+    // Validate data
+    let isValidData:boolean = true;
+
+    // Validate the Inventory Numbers
+    let inventorynumbers = inventorynumbersTextBox.value;
+    if (isValidInventoryNumbers(inventorynumbers)) {
+        isValidData = false;
+        inventorynumbersTextBox.nextElementSibling.textContent;
+    }
+
+}
+
+/**
+ * This validates an inventory number..
+ * @param n The string to be validated
+ * @returns True if n is a valid inventory number
+ */
+function isValidInventoryNumbers(n) {
+    return typeof n === 'number' && !isNaN(n) && isFinite(n);
 }
 
 /**
