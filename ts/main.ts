@@ -158,6 +158,20 @@ function getPainting():Painting {
         console.log("Invalid Artwork Archive");
     }
 
+    // Validate the Price
+    let price = parseFloat(priceTextBox.value);
+    if (isNaN(price) || price < 0) {
+        isValidData = false;
+        priceTextBox.nextElementSibling.textContent = "Price must be a positive number";
+    }
+
+    // Validate the Title
+    let title:string = titleTextBox.value;
+    if (title.trim() == "") {
+        isValidData = false;
+        let titleErrorSpan = titleTextBox.nextElementSibling;
+        titleErrorSpan.textContent = "You must provide a title";
+    }
 }
 
 /**
