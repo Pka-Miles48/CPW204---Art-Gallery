@@ -96,6 +96,68 @@ function getPainting():Painting {
         console.log("Invalid Global ID");
     }
     
+    
+    // Validate the Artwork Archive
+    // Define the structure of an artwork item
+    interface Artwork {
+        id: string;
+        title: string;
+        artist: string;
+        year: number;
+    }
+
+    // Define the structure of an artwork archive
+    interface ArtworkArchive {
+        artworks: Artwork[];
+    }
+
+    // Function to validate an artwork item
+    function isValidArtwork(item: any): item is Artwork {
+        return typeof item.id === 'string' &&
+            typeof item.title === 'string' &&
+            typeof item.artist === 'string' &&
+            typeof item.year === 'number';
+    }
+
+    // Function to validate an artwork archive
+    function isValidArtworkArchive(archive: any): archive is ArtworkArchive {
+        if (!Array.isArray(archive.artworks)) {
+            return false;
+        }
+        for (const item of archive.artworks) {
+            if (!isValidArtwork(item)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Usage
+    const archive: any = {
+        artworks: [
+            {
+                id: "1",
+                title: "Artwork 1",
+                artist: "Artist 1",
+                year: 2020
+            },
+            {
+                id: "2",
+                title: "Artwork 2",
+                artist: "Artist 2",
+                year: 2021
+            }
+        ]
+    };
+    ;
+    if (isValidArtworkArchive(archive)) {
+        console.log("Valid Artwork Archive");
+        isValidData = false;
+        artworkarchiveTextBox.nextElementSibling.textContent = "You must enter the name of the artwork archive";
+    } else {
+        console.log("Invalid Artwork Archive");
+    }
+
 }
 
 /**
