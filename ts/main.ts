@@ -62,6 +62,8 @@ function processPainting() {
  * will be shown on the web page.
  */
 function getPainting():Painting {
+    clearAllErrorMessages();
+
     // Get all inputs
     let inventorynumbersTextBox = document.querySelector("#inventory-numbers") as HTMLInputElement;
     let globalIDsTextBox = document.querySelector("#global-ids") as HTMLInputElement;
@@ -190,4 +192,19 @@ function isValidInventoryNumbers(n) {
  */
 function addPainting(b:Painting):void{
 
+}
+
+/**
+ * Clears all the validation eror message spans
+ * in the form
+ */
+function clearAllErrorMessages() {
+    // Get all error spans
+    let allSpans = document.querySelectorAll("form span.error-msg");
+
+    // Loop through, and set each span to an empty string
+    for(let i = 0; i < allSpans.length; i++){
+        let currentSpan = allSpans[i];
+        currentSpan.textContent = "";
+    }
 }
