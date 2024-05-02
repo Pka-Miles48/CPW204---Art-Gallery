@@ -93,7 +93,7 @@ function getPainting():Painting {
     if(isValidGlobalId(id)) {
         console.log("Valid Global ID");
         isValidData = false;
-        inventorynumbersTextBox.nextElementSibling.textContent = "You must enter a 5 digit global ID";
+        globalIDsTextBox.nextElementSibling.textContent = "You must enter a 5 digit global ID";
     } else {
         console.log("Invalid Global ID");
     }
@@ -174,6 +174,18 @@ function getPainting():Painting {
         let titleErrorSpan = titleTextBox.nextElementSibling;
         titleErrorSpan.textContent = "You must provide a title";
     }
+
+    if (isValidData) {
+        let addedPainting = new Painting();
+        addedPainting.inventorynumbers = inventorynumbers;
+        addedPainting.globalIDs = (id);
+        addedPainting.artworkarchive = (archive);
+        addedPainting.price = price;
+        addedPainting.title = title;
+
+        return addedPainting;
+    }
+    return null; // Return null if any invalid data is present
 }
 
 /**
@@ -191,7 +203,8 @@ function isValidInventoryNumbers(n) {
  * @param b The Painting containing valid data to be added
  */
 function addPainting(b:Painting):void{
-
+    alert("Data was valid, painting added")
+    console.log(b);
 }
 
 /**
